@@ -1,0 +1,38 @@
+version: "3"
+services:
+  postgres_db:
+    image: "postgres:10.10"
+    container_name: "systech_collector_postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=systech
+      - TZ=UTC
+    volumes:
+      - dbdata:/var/lib/postgresql/data_systech_collector_pg 
+
+    networks:
+      - systech-network
+
+  rabbit_mq:
+    image: "rabbitmq:3-management"
+    container_name: "systech_rabbit"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15692:15692"
+      - "1883:1883"
+      - "8883:8883"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - systech-network
+networks:
+  systech-network:
+    driver: bridge
+
+volumes:
+  dbdata:

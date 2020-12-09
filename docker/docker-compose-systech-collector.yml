@@ -18,7 +18,7 @@ services:
 
   rabbit_mq:
     image: "rabbitmq:3-management"
-    container_name: "systech_rabbit"
+    container_name: "systech_collector_rabbit"
     ports:
       - "5672:5672"
       - "15672:15672"

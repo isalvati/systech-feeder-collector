@@ -4,16 +4,22 @@ docker-compose --project-name systech-collector -f docker-compose-systech-collec
 echo "docker instance up"
 
 echo "docker setting rabbit mq mqtt config"
-RESULT=$(docker exec -it systech_rabbit rabbitmq-plugins enable --offline rabbitmq_management)
+RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_management)
 echo $RESULT
-RESULT=$(docker exec -it systech_rabbit rabbitmq-plugins enable --offline rabbitmq_mqtt)
+RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_mqtt)
 echo $RESULT
-RESULT=$(docker exec -it systech_rabbit rabbitmq-plugins enable --offline rabbitmq_web_mqtt)
+RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_web_mqtt)
 echo $RESULT
-RESULT=$(docker exec -it systech_rabbit rabbitmq-plugins enable --offline rabbitmq_prometheus)
+RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_prometheus)
 echo $RESULT
-RESULT=$(docker exec -it systech_rabbit rabbitmq-plugins enable --offline rabbitmq_auth_backend_oauth2)
+RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_auth_backend_oauth2)
 echo $RESULT
-RESULT=$(docker exec -it systech_rabbit echo 'SYSTECH_RABBIT_NODE=rabbit@localhost' >> /etc/rabbitmq/rabbitmq.conf)
+RESULT=$(docker exec -it systech_collector_rabbit echo 'SYSTECH_RABBIT_NODE=rabbit@localhost' >> /etc/rabbitmq/rabbitmq.conf)
 echo $RESULT
+RESULT=$(docker cp rabbit-definitions.json  systech_collector_rabbit:/home)
+echo $RESULT
+RESULT=$(docker exec -it systech_collector_rabbit  rabbitmqctl import_definitions /home/rabbit-definitions.json)
+echo $RESULT
+
+
 echo "docker rabbit mq mqtt config finished"

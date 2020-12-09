@@ -1,105 +1,113 @@
 package br.com.systechfeeder.systechcollector.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SensorJsonDataDTO {
-    private float temp;
-    private float umid;
-    private float g_alim;
-    private float g_anim;
-    private float alt;
-    private float volt;
-    private float x;
-    private float y;
-    private float z;
-    private String er;
+    @JsonProperty("temp")
+    private float temperature;
+    @JsonProperty("umid")
+    private float humidity;
+    @JsonProperty("g_alim")
+    private float feederWeight;
+    @JsonProperty("g_anim")
+    private float animalWeight;
+    @JsonProperty("alt")
+    private float height;
+    @JsonProperty("volt")
+    private float batteryVoltage;
+    @JsonProperty("x")
+    private float inclinationX;
+    @JsonProperty("y")
+    private float inclinationY;
+    @JsonProperty("z")
+    private float inclinationZ;
+    @JsonProperty("er")
+    private String error;
+    @JsonProperty("mac")
     private String mac;
 
-
-    // Getter Methods
-
-    public float getTemp() {
-        return temp;
+    public float getTemperature() {
+        return temperature;
     }
 
-    public float getUmid() {
-        return umid;
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
     }
 
-    public float getG_alim() {
-        return g_alim;
+    public float getHumidity() {
+        return humidity;
     }
 
-    public float getG_anim() {
-        return g_anim;
+    public void setHumidity(float humidity) {
+        this.humidity = humidity;
     }
 
-    public float getAlt() {
-        return alt;
+    public float getFeederWeight() {
+        return feederWeight;
     }
 
-    public float getVolt() {
-        return volt;
+    public void setFeederWeight(float feederWeight) {
+        this.feederWeight = feederWeight;
     }
 
-    public float getX() {
-        return x;
+    public float getAnimalWeight() {
+        return animalWeight;
     }
 
-    public float getY() {
-        return y;
+    public void setAnimalWeight(float animalWeight) {
+        this.animalWeight = animalWeight;
     }
 
-    public float getZ() {
-        return z;
+    public float getHeight() {
+        return height;
     }
 
-    public String getEr() {
-        return er;
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getBatteryVoltage() {
+        return batteryVoltage;
+    }
+
+    public void setBatteryVoltage(float batteryVoltage) {
+        this.batteryVoltage = batteryVoltage;
+    }
+
+    public float getInclinationX() {
+        return inclinationX;
+    }
+
+    public void setInclinationX(float inclinationX) {
+        this.inclinationX = inclinationX;
+    }
+
+    public float getInclinationY() {
+        return inclinationY;
+    }
+
+    public void setInclinationY(float inclinationY) {
+        this.inclinationY = inclinationY;
+    }
+
+    public float getInclinationZ() {
+        return inclinationZ;
+    }
+
+    public void setInclinationZ(float inclinationZ) {
+        this.inclinationZ = inclinationZ;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     public String getMac() {
         return mac;
-    }
-
-    // Setter Methods
-
-    public void setTemp(float temp) {
-        this.temp = temp;
-    }
-
-    public void setUmid(float umid) {
-        this.umid = umid;
-    }
-
-    public void setG_alim(float g_alim) {
-        this.g_alim = g_alim;
-    }
-
-    public void setG_anim(float g_anim) {
-        this.g_anim = g_anim;
-    }
-
-    public void setAlt(float alt) {
-        this.alt = alt;
-    }
-
-    public void setVolt(float volt) {
-        this.volt = volt;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    public void setZ(float z) {
-        this.z = z;
-    }
-
-    public void setEr(String er) {
-        this.er = er;
     }
 
     public void setMac(String mac) {
@@ -108,17 +116,17 @@ public class SensorJsonDataDTO {
 
     @Override
     public String toString() {
-        return "SensorDataDTO{" +
-                "temp=" + temp +
-                ", umid=" + umid +
-                ", g_alim=" + g_alim +
-                ", g_anim=" + g_anim +
-                ", alt=" + alt +
-                ", volt=" + volt +
-                ", x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                ", er='" + er + '\'' +
+        return "SensorJsonDataDTO{" +
+                "temperature=" + temperature +
+                ", humidity=" + humidity +
+                ", feederWeight=" + feederWeight +
+                ", animalWeight=" + animalWeight +
+                ", height=" + height +
+                ", batteryVoltage=" + batteryVoltage +
+                ", inclinationX=" + inclinationX +
+                ", inclinationY=" + inclinationY +
+                ", inclinationZ=" + inclinationZ +
+                ", error='" + error + '\'' +
                 ", mac='" + mac + '\'' +
                 '}';
     }

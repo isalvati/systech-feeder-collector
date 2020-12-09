@@ -1,7 +1,6 @@
 package br.com.systechfeeder.systechcollector.service;
 
 import br.com.systechfeeder.systechcollector.dto.SensorDataDTO;
-import br.com.systechfeeder.systechcollector.dto.SensorJsonDataDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +20,10 @@ public class SensorDataReceiver {
     @RabbitListener(queues = "systech.queue.sensor")
     public void consumer(Message message) {
         String json = new String(message.getBody(), StandardCharsets.UTF_8);
-        SensorJsonDataDTO sensorDataDTO;
+        SensorDataDTO sensorDataDTO;
 
         try {
-            sensorDataDTO = OBJECT_MAPPER.readValue(json, SensorJsonDataDTO.class);
+            sensorDataDTO = OBJECT_MAPPER.readValue(json, SensorDataDTO.class);
             logger.debug("RoutingKey (MQTT TOPIC): [" + message.getMessageProperties().getReceivedRoutingKey() + "]");
             logger.debug("Queue: [" + message.getMessageProperties().getConsumerQueue() + "]");
             logger.debug("ReceivedExchange: [" + message.getMessageProperties().getReceivedExchange() + "]");

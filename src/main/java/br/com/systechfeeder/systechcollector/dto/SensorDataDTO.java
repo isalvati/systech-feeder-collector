@@ -1,100 +1,126 @@
 package br.com.systechfeeder.systechcollector.dto;
 
+import br.com.systechfeeder.systechcollector.util.validation.MACAddress;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.math.BigDecimal;
 
 public class SensorDataDTO {
     @JsonProperty("temp")
-    private float temperature;
+    private BigDecimal temperature;
     @JsonProperty("umid")
-    private float humidity;
+    private BigDecimal humidity;
     @JsonProperty("g_alim")
-    private float feederWeight;
+    private BigDecimal feederWeight;
     @JsonProperty("g_anim")
-    private float animalWeight;
+    private BigDecimal animalWeight;
     @JsonProperty("alt")
-    private float height;
+    private Integer height;
     @JsonProperty("volt")
-    private float batteryVoltage;
+    private BigDecimal batteryVoltage;
     @JsonProperty("x")
-    private float inclinationX;
+    private BigDecimal inclinationX;
     @JsonProperty("y")
-    private float inclinationY;
+    private BigDecimal inclinationY;
     @JsonProperty("z")
-    private float inclinationZ;
+    private BigDecimal inclinationZ;
     @JsonProperty("er")
     private String error;
     @JsonProperty("mac")
+    @MACAddress
     private String mac;
+    @JsonProperty("ts")
+    private Long localTimestamp;
 
-    public float getTemperature() {
+
+    //todo: incluir enum e definir momentos, por hora é o nome do topico
+    private String moment;
+
+    public String getMoment() {
+        return moment;
+    }
+
+    public void setMoment(String moment) {
+        this.moment = moment;
+    }
+
+    public Long getLocalTimestamp() {
+        return localTimestamp;
+    }
+
+    public void setLocalTimestamp(Long localTimestamp) {
+        this.localTimestamp = localTimestamp;
+    }
+
+    public BigDecimal getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(float temperature) {
+    public void setTemperature(BigDecimal temperature) {
         this.temperature = temperature;
     }
 
-    public float getHumidity() {
+    public BigDecimal getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(float humidity) {
+    public void setHumidity(BigDecimal humidity) {
         this.humidity = humidity;
     }
 
-    public float getFeederWeight() {
+    public BigDecimal getFeederWeight() {
         return feederWeight;
     }
 
-    public void setFeederWeight(float feederWeight) {
+    public void setFeederWeight(BigDecimal feederWeight) {
         this.feederWeight = feederWeight;
     }
 
-    public float getAnimalWeight() {
+    public BigDecimal getAnimalWeight() {
         return animalWeight;
     }
 
-    public void setAnimalWeight(float animalWeight) {
+    public void setAnimalWeight(BigDecimal animalWeight) {
         this.animalWeight = animalWeight;
     }
 
-    public float getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public float getBatteryVoltage() {
+    public BigDecimal getBatteryVoltage() {
         return batteryVoltage;
     }
 
-    public void setBatteryVoltage(float batteryVoltage) {
+    public void setBatteryVoltage(BigDecimal batteryVoltage) {
         this.batteryVoltage = batteryVoltage;
     }
 
-    public float getInclinationX() {
+    public BigDecimal getInclinationX() {
         return inclinationX;
     }
 
-    public void setInclinationX(float inclinationX) {
+    public void setInclinationX(BigDecimal inclinationX) {
         this.inclinationX = inclinationX;
     }
 
-    public float getInclinationY() {
+    public BigDecimal getInclinationY() {
         return inclinationY;
     }
 
-    public void setInclinationY(float inclinationY) {
+    public void setInclinationY(BigDecimal inclinationY) {
         this.inclinationY = inclinationY;
     }
 
-    public float getInclinationZ() {
+    public BigDecimal getInclinationZ() {
         return inclinationZ;
     }
 
-    public void setInclinationZ(float inclinationZ) {
+    public void setInclinationZ(BigDecimal inclinationZ) {
         this.inclinationZ = inclinationZ;
     }
 

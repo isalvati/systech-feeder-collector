@@ -6,25 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 
 public class SensorDataDTO {
-    @JsonProperty("temp")
+    @JsonProperty("temperaturaComedouro")
     private BigDecimal temperature;
-    @JsonProperty("umid")
+    @JsonProperty("temperaturaAnimal")
+    private BigDecimal animalTemperature;
+    @JsonProperty("umidadeComedouro")
     private BigDecimal humidity;
-    @JsonProperty("g_alim")
+    @JsonProperty("pesoComedouro")
     private BigDecimal feederWeight;
-    @JsonProperty("g_anim")
+    @JsonProperty("pesoAnimal")
     private BigDecimal animalWeight;
-    @JsonProperty("alt")
+    @JsonProperty("alturaAnimal")
     private Integer height;
-    @JsonProperty("volt")
+    @JsonProperty("tensaoBateria")
     private BigDecimal batteryVoltage;
-    @JsonProperty("x")
+    @JsonProperty("inclinacao_x")
     private BigDecimal inclinationX;
-    @JsonProperty("y")
+    @JsonProperty("inclinacao_y")
     private BigDecimal inclinationY;
-    @JsonProperty("z")
+    @JsonProperty("inclinacao_z")
     private BigDecimal inclinationZ;
-    @JsonProperty("er")
+    @JsonProperty("erro")
     private String error;
     @JsonProperty("mac")
     @MACAddress
@@ -32,6 +34,13 @@ public class SensorDataDTO {
     @JsonProperty("ts")
     private Long localTimestamp;
 
+    public BigDecimal getAnimalTemperature() {
+        return animalTemperature;
+    }
+
+    public void setAnimalTemperature(BigDecimal animalTemperature) {
+        this.animalTemperature = animalTemperature;
+    }
 
     //todo: incluir enum e definir momentos, por hora é o nome do topico
     private String moment;

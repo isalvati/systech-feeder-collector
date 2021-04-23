@@ -14,8 +14,8 @@ RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offl
 echo $RESULT
 RESULT=$(docker exec -it systech_collector_rabbit rabbitmq-plugins enable --offline rabbitmq_auth_backend_oauth2)
 echo $RESULT
-RESULT=$(docker exec -it systech_collector_rabbit echo 'SYSTECH_RABBIT_NODE=rabbit@localhost' >> /etc/rabbitmq/rabbitmq.conf)
-echo $RESULT
+#RESULT=$(docker exec -it systech_collector_rabbit echo 'SYSTECH_RABBIT_NODE=rabbit@localhost' >> /etc/rabbitmq/rabbitmq.conf)
+#echo $RESULT
 RESULT=$(docker cp rabbit-definitions.json  systech_collector_rabbit:/home)
 echo $RESULT
 RESULT=$(docker exec -it systech_collector_rabbit  rabbitmqctl import_definitions /home/rabbit-definitions.json)

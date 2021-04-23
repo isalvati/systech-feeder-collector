@@ -16,7 +16,9 @@ create table systech_collector.sensor_data
     inclination_y       numeric(19, 2),
     inclination_z       numeric(19, 2),
     moment              varchar(30),
-    error               varchar(30),
+    error               varchar(50),
+    opened_cover        boolean,
+    elapsed_time        bigint,
     local_timestamp     timestamp,
     created_at          timestamp          not null default Now()
 );

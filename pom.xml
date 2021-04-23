@@ -12,10 +12,10 @@
 	<artifactId>systech-collector</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>systech-collector</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Systech Feeder Data Gateway</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencies>

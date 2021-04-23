@@ -49,6 +49,13 @@ public class SensorDataEntity extends BaseEntity {
     @Column(name = "error")
     private String error;
 
+    @Column(name = "opened_cover")
+    private Boolean openedCover;
+
+    @Column(name = "elapsed_time")
+    private Long elapsedTime;
+
+
     public String getMac() {
         return mac;
     }
@@ -153,35 +160,39 @@ public class SensorDataEntity extends BaseEntity {
         this.moment = moment;
     }
 
+    public Boolean getOpenedCover() {
+        return openedCover;
+    }
+
+    public void setOpenedCover(Boolean openedCover) {
+        this.openedCover = openedCover;
+    }
+
+    public Long getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(Long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SensorDataEntity that = (SensorDataEntity) o;
-        return Objects.equals(mac, that.mac) &&
-                Objects.equals(temperature, that.temperature) &&
-                Objects.equals(humidity, that.humidity) &&
-                Objects.equals(feederWeight, that.feederWeight) &&
-                Objects.equals(animalWeight, that.animalWeight) &&
-                Objects.equals(height, that.height) &&
-                Objects.equals(batteryVoltage, that.batteryVoltage) &&
-                Objects.equals(inclinationX, that.inclinationX) &&
-                Objects.equals(inclinationY, that.inclinationY) &&
-                Objects.equals(inclinationZ, that.inclinationZ) &&
-                Objects.equals(localTimestamp, that.localTimestamp) &&
-                Objects.equals(moment, that.moment) &&
-                Objects.equals(error, that.error);
+        return Objects.equals(mac, that.mac) && Objects.equals(temperature, that.temperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(moment, that.moment) && Objects.equals(error, that.error) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), mac, temperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, localTimestamp, moment, error);
+        return Objects.hash(super.hashCode(), mac, temperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, localTimestamp, moment, error, openedCover, elapsedTime);
     }
 
     @Override
     public String toString() {
-        return "SensorData{" +
+        return "SensorDataEntity{" +
                 "mac='" + mac + '\'' +
                 ", temperature=" + temperature +
                 ", humidity=" + humidity +
@@ -195,6 +206,8 @@ public class SensorDataEntity extends BaseEntity {
                 ", localTimestamp=" + localTimestamp +
                 ", moment='" + moment + '\'' +
                 ", error='" + error + '\'' +
+                ", openedCover=" + openedCover +
+                ", elapsedTime=" + elapsedTime +
                 '}';
     }
 }

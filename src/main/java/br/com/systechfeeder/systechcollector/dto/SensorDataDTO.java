@@ -4,6 +4,7 @@ import br.com.systechfeeder.systechcollector.util.validation.MACAddress;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class SensorDataDTO {
     @JsonProperty("temperaturaComedouro")
@@ -33,6 +34,26 @@ public class SensorDataDTO {
     private String mac;
     @JsonProperty("ts")
     private Long localTimestamp;
+    @JsonProperty("tampaAberta")
+    private Boolean openedCover;
+    @JsonProperty("tempo_decorrido")
+    private Long elapsedTime;
+
+    public Boolean getOpenedCover() {
+        return openedCover;
+    }
+
+    public void setOpenedCover(Boolean openedCover) {
+        this.openedCover = openedCover;
+    }
+
+    public Long getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(Long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
 
     public BigDecimal getAnimalTemperature() {
         return animalTemperature;
@@ -150,9 +171,23 @@ public class SensorDataDTO {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SensorDataDTO that = (SensorDataDTO) o;
+        return Objects.equals(temperature, that.temperature) && Objects.equals(animalTemperature, that.animalTemperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(error, that.error) && Objects.equals(mac, that.mac) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime) && Objects.equals(moment, that.moment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(temperature, animalTemperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, error, mac, localTimestamp, openedCover, elapsedTime, moment);
+    }
+
+    @Override
     public String toString() {
-        return "SensorJsonDataDTO{" +
+        return "SensorDataDTO{" +
                 "temperature=" + temperature +
+                ", animalTemperature=" + animalTemperature +
                 ", humidity=" + humidity +
                 ", feederWeight=" + feederWeight +
                 ", animalWeight=" + animalWeight +
@@ -163,6 +198,10 @@ public class SensorDataDTO {
                 ", inclinationZ=" + inclinationZ +
                 ", error='" + error + '\'' +
                 ", mac='" + mac + '\'' +
+                ", localTimestamp=" + localTimestamp +
+                ", openedCover=" + openedCover +
+                ", elapsedTime=" + elapsedTime +
+                ", moment='" + moment + '\'' +
                 '}';
     }
 }

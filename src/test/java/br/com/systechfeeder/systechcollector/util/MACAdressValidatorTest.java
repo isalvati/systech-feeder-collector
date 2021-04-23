@@ -4,7 +4,7 @@ import br.com.systechfeeder.systechcollector.util.validation.MACAddressValidator
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-public class MACAdressValidator {
+public class MACAdressValidatorTest {
     MACAddressValidator validator = new MACAddressValidator();
 
     @Test

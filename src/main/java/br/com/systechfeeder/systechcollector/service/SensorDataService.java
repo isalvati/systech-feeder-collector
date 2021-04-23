@@ -34,12 +34,10 @@ public class SensorDataService extends SystechService<SensorDataEntity> {
             validate(sensorDataDTO);
             SensorDataEntity entity = new ModelMapper().map(sensorDataDTO, SensorDataEntity.class);
             if(sensorDataDTO.getLocalTimestamp() != null) {
-                entity.setLocalTimestamp(new Timestamp(sensorDataDTO.getLocalTimestamp()));
-            } else {
-                entity.setLocalTimestamp(new Timestamp(System.currentTimeMillis()));
+                entity.setLocalTimestamp(new Timestamp(sensorDataDTO.getLocalTimestamp()*1000));
             }
             save(entity);
-            LOGGER.error("Dados de sensor salvo");
+            LOGGER.debug("Dados de sensor salvo");
         } catch (SystechException e) {
             LOGGER.error("Erro ao salvar dados de sensor: " + e.getMessage());
         }

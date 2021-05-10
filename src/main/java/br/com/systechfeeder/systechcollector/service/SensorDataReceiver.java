@@ -29,7 +29,8 @@ public class SensorDataReceiver {
     public void consumer(Message message) {
         String json = new String(message.getBody(), StandardCharsets.UTF_8);
         SensorDataDTO sensorDataDTO;
-
+        LOGGER.debug("MessageBody");
+        LOGGER.debug(new String(message.getBody()));
         try {
             sensorDataDTO = OBJECT_MAPPER.readValue(json, SensorDataDTO.class);
             sensorDataDTO.setMoment(message.getMessageProperties().getReceivedRoutingKey());
@@ -37,8 +38,6 @@ public class SensorDataReceiver {
             LOGGER.debug("RoutingKey (MQTT TOPIC): [" + message.getMessageProperties().getReceivedRoutingKey() + "]");
             LOGGER.debug("Queue: [" + message.getMessageProperties().getConsumerQueue() + "]");
             LOGGER.debug("ReceivedExchange: [" + message.getMessageProperties().getReceivedExchange() + "]");
-            LOGGER.debug("MessageBody");
-            LOGGER.debug(new String(message.getBody()));
             sensorDataService.saveSensorData(sensorDataDTO);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

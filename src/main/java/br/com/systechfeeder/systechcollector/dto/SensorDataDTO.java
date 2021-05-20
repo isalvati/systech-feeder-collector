@@ -30,7 +30,7 @@ public class SensorDataDTO {
     @JsonProperty("erro")
     private String error;
     @JsonProperty("mac")
-    @MACAddress
+//    @MACAddress
     private String mac;
     @JsonProperty("ts")
     private Long localTimestamp;
@@ -38,6 +38,18 @@ public class SensorDataDTO {
     private Boolean openedCover;
     @JsonProperty("tempo_decorrido")
     private Long elapsedTime;
+    //todo: incluir enum e definir momentos, por hora é o nome do topico
+    private String moment;
+    @JsonProperty("gateway_mac")
+    private String gatewayMac;
+
+    public String getGatewayMac() {
+        return gatewayMac;
+    }
+
+    public void setGatewayMac(String gatewayMac) {
+        this.gatewayMac = gatewayMac;
+    }
 
     public Boolean getOpenedCover() {
         return openedCover;
@@ -62,9 +74,6 @@ public class SensorDataDTO {
     public void setAnimalTemperature(BigDecimal animalTemperature) {
         this.animalTemperature = animalTemperature;
     }
-
-    //todo: incluir enum e definir momentos, por hora é o nome do topico
-    private String moment;
 
     public String getMoment() {
         return moment;
@@ -175,12 +184,12 @@ public class SensorDataDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SensorDataDTO that = (SensorDataDTO) o;
-        return Objects.equals(temperature, that.temperature) && Objects.equals(animalTemperature, that.animalTemperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(error, that.error) && Objects.equals(mac, that.mac) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime) && Objects.equals(moment, that.moment);
+        return Objects.equals(temperature, that.temperature) && Objects.equals(animalTemperature, that.animalTemperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(error, that.error) && Objects.equals(mac, that.mac) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime) && Objects.equals(gatewayMac, that.gatewayMac) && Objects.equals(moment, that.moment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(temperature, animalTemperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, error, mac, localTimestamp, openedCover, elapsedTime, moment);
+        return Objects.hash(temperature, animalTemperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, error, mac, localTimestamp, openedCover, elapsedTime, gatewayMac, moment);
     }
 
     @Override
@@ -201,6 +210,7 @@ public class SensorDataDTO {
                 ", localTimestamp=" + localTimestamp +
                 ", openedCover=" + openedCover +
                 ", elapsedTime=" + elapsedTime +
+                ", gatewayMac='" + gatewayMac + '\'' +
                 ", moment='" + moment + '\'' +
                 '}';
     }

@@ -1,8 +1,6 @@
 package br.com.systechfeeder.systechcollector.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -55,6 +53,17 @@ public class SensorDataEntity extends BaseEntity {
     @Column(name = "elapsed_time")
     private Long elapsedTime;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "local_gateway_id")
+    private LocalGatewayEntity localGateway;
+
+    public LocalGatewayEntity getLocalGateway() {
+        return localGateway;
+    }
+
+    public void setLocalGateway(LocalGatewayEntity localGateway) {
+        this.localGateway = localGateway;
+    }
 
     public String getMac() {
         return mac;
@@ -182,12 +191,12 @@ public class SensorDataEntity extends BaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SensorDataEntity that = (SensorDataEntity) o;
-        return Objects.equals(mac, that.mac) && Objects.equals(temperature, that.temperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(moment, that.moment) && Objects.equals(error, that.error) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime);
+        return Objects.equals(mac, that.mac) && Objects.equals(temperature, that.temperature) && Objects.equals(humidity, that.humidity) && Objects.equals(feederWeight, that.feederWeight) && Objects.equals(animalWeight, that.animalWeight) && Objects.equals(height, that.height) && Objects.equals(batteryVoltage, that.batteryVoltage) && Objects.equals(inclinationX, that.inclinationX) && Objects.equals(inclinationY, that.inclinationY) && Objects.equals(inclinationZ, that.inclinationZ) && Objects.equals(localTimestamp, that.localTimestamp) && Objects.equals(moment, that.moment) && Objects.equals(error, that.error) && Objects.equals(openedCover, that.openedCover) && Objects.equals(elapsedTime, that.elapsedTime) && Objects.equals(localGateway, that.localGateway);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), mac, temperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, localTimestamp, moment, error, openedCover, elapsedTime);
+        return Objects.hash(super.hashCode(), mac, temperature, humidity, feederWeight, animalWeight, height, batteryVoltage, inclinationX, inclinationY, inclinationZ, localTimestamp, moment, error, openedCover, elapsedTime, localGateway);
     }
 
     @Override
@@ -208,6 +217,7 @@ public class SensorDataEntity extends BaseEntity {
                 ", error='" + error + '\'' +
                 ", openedCover=" + openedCover +
                 ", elapsedTime=" + elapsedTime +
+                ", localGateway=" + localGateway +
                 '}';
     }
 }
